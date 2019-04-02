@@ -1,11 +1,18 @@
 const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
 const suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
-const deck = [];
+let deck = [];
 let player = [];
 let nextCard = [];
 const insideButton = document.querySelector(".inBetween");
 const outsideButton = document.querySelector(".outside");
+const dealCardsButton = document.querySelector(".dealer")
 let playerGuess;
+
+dealCardsButton.addEventListener("click", ()=>{
+	buildDeck(values, suits);
+	dealCardsToPlayer();
+	showCards();
+})
 
  insideButton.addEventListener("click", ()=>{
  	playerGuess = 'inBetween'
@@ -28,6 +35,8 @@ let playerGuess;
 };
 
 function checkGuess() {
+	buildDeck(values, suits);
+	dealCardsToPlayer();
 	if (playerGuess === "inBetween") {
 		console.log(player[0][0].value, '1');
 		console.log(player[1][0].value, '2');
@@ -35,52 +44,94 @@ function checkGuess() {
 		if (player[0][0].value < player[1][0].value) {
 			if (nextCard[0][0].value > player[0][0].value && nextCard[0][0].value < player[1][0].value){
 				console.log("Winner, Winner, Chicken dinner!");
+				player = [];
+				deck = [];
+				console.log(deck.length);
+				console.log(player);
 			}
 			else {
 				console.log('1 card < 2 card');
 				console.log("Gimme your money!");
+				player = [];
+				deck = []
+				console.log(deck.length);
+				console.log(player);
 			}
 		}
 		else if (player[1][0].value < player[0][0].value) {
 				if (nextCard[0][0].value > player[1][0].value && nextCard[0][0].value < player[0][0].value){
 					console.log("Winner, Winner, Chicken dinner!");
+				player = [];
+				deck = []
+				console.log(deck.length);
+				console.log(player);
 				}
 			else{
 				console.log('2 card < 1 card');
 				console.log("Gimme your money!");
+				player = [];
+				deck = []
+				console.log(deck.length);
+				console.log(player);
 			}
 		}
 		else{
 
 			console.log("Deal again!");
+				player = [];
+				deck = []
+				console.log(deck.length);
+				console.log(player);
 		}
 	}
 
 	else {
+		if (playerGuess === "outside") {
 		console.log(player[0][0].value, '1');
 		console.log(player[1][0].value, '2');
 		console.log(nextCard[0][0].value, 'next');
 		if(player[1][0].value > player[0][0].value) {
 			if (nextCard[0][0].value < player[0][0].value && nextCard[0][0] > player[1][0].value){
 				console.log("Winner, Winner, Chicken dinner!");
+				player = [];
+				deck = [];
+				console.log(deck.length);
+				console.log(player);
 			}
 			else {
 				console.log("Gimme your money!");
+				player = [];
+				deck = [];
+				console.log(deck.length);
+				console.log(player);
 			}
 		}
 		else if (player[0][0].value > player[1][0].value) {
 			if (nextCard[0][0].value > player[0][0].value && nextCard[0][0].value < player[1][0].value){
 				console.log("Winner, Winner, Chicken dinner!");
+				player = [];
+				deck = [];
+				console.log(deck.length);
+				console.log(player);
 			}
 			else{
 				console.log("Gimme your money!");
+				player = [];
+				deck = [];
+				console.log(deck.length);
+				console.log(player);
 
 			}
 		}
 		else {
 			console.log("Deal again!");
+			player = [];
+			deck = [];
+			console.log(deck.length);
+			console.log(player);
 		}
 		
+	}
 	}
 };
 

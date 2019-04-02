@@ -6,10 +6,36 @@ header {
 	font-size: 60px;
 	font-weight: bold;
 	font-family: 'Nosifer', cursive;
+	color: #830303;
 }
-.column1 {
-	float: left;
+button {
+	display: block;
+	width: 200px;
+	height: 50px;
+	border: 2px solid #830303;
 }
-.column2 {
-	float: right;
+.outside {
+	background-color: black;
+	color: #830303;
+	font-family: 'Nosifer', cursive;
+	font-size: 20px;
+	margin-top: 50px;
+}
+.inBetween {
+	background-color: black;
+	color: #830303;
+	font-family: 'Nosifer', cursive;
+	font-size: 20px;
+}
+.dealer {
+	background-color: black;
+	color: #830303;
+	font-family: 'Nosifer', cursive;
+	font-size: 20px;
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+}
+footer {
+	text-align: center;
 }
