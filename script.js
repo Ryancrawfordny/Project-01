@@ -30,7 +30,7 @@ function buildDeck(arr1, arr2) {
 	return deck;
 };
 
-dealCardsButton.addEventListener("click", ()=>{
+ dealCardsButton.addEventListener("click", ()=>{
 	buildDeck(values, suits);
 	dealCardsToPlayer();
 })
@@ -48,8 +48,6 @@ dealCardsButton.addEventListener("click", ()=>{
  	checkGuess();
  })
  
- 
-
 function checkGuess() {
 	
 	if (playerGuess === "inBetween") {
@@ -61,13 +59,13 @@ function checkGuess() {
 			console.log (` in playerValue2 > playerValue1`)
 
 			if (playerValue2 > cardThreeValue && cardThreeValue > playerValue1){
-				console.log("Winner, Winner, Unchicken dinner!");
+				console.log("Winner, Winner, Vegan Dinner!");
 				player = [];
 				deck = [];
 				console.log(deck.length);
 				console.log(player);
 			} else if (cardThreeValue == playerValue1 || cardThreeValue == playerValue2) {
-				console.log("deal again")
+				console.log("Deal again")
 			}
 			else {
 				console.log('1 card < 2 card');
@@ -81,13 +79,13 @@ function checkGuess() {
 		else if (playerValue2 < playerValue1) {
 			console.log (` in playerValue2 < playerValue1`)
 				if (playerValue1 > cardThreeValue  && cardThreeValue > playerValue2 ){
-					console.log("Winner, Winner, Chicken dinner!");
+					console.log("Winner, Winner, Vegan Dinner!");
 				player = [];
 				deck = []
 				console.log(deck.length);
 				console.log(player);
 				} else if (cardThreeValue == playerValue1 || cardThreeValue == playerValue2) {
-				console.log("Deal again!");
+				console.log("Deal Again!");
 				player = [];
 				deck = []
 				console.log(deck.length);
@@ -95,7 +93,7 @@ function checkGuess() {
 		}
 			else{
 				console.log('2 card < 1 card');
-				console.log("Gimme your money!");
+				console.log("Gimme Your Money!");
 				player = [];
 				deck = []
 				console.log(deck.length);
@@ -113,13 +111,13 @@ function checkGuess() {
 			if(playerValue2 > playerValue1) {
 			if (cardThreeValue > playerValue1  &&  playerValue2 < cardThreeValue){
 				console.log(playerValue1, playerValue2, cardThreeValue);
-				console.log("Winner, Winner, Chicken dinner!");
+				console.log("Winner, Winner, Vegan Dinner!");
 				player = [];
 				deck = [];
 				console.log(deck.length);
 				console.log(player);
 			} else if (cardThreeValue == playerValue1 || cardThreeValue == playerValue2){
-				console.log('deal')
+				console.log('Deal Again')
 			}
 			else {
 				console.log(playerValue1, playerValue2, cardThreeValue);
@@ -133,7 +131,7 @@ function checkGuess() {
 		else if (playerValue1 > playerValue2) {
 				if (cardThreeValue > playerValue1  &&  playerValue2 < cardThreeValue){
 				console.log(playerValue1, playerValue2, cardThreeValue);
-				console.log("Winner, Winner, Chicken dinner!");
+				console.log("Winner, Winner, Vegan Dinner!");
 				player = [];
 				deck = [];
 				console.log(deck.length);
@@ -142,7 +140,7 @@ function checkGuess() {
 				
 			}	else{
 				console.log(playerValue1, playerValue2, cardThreeValue);
-				console.log("Gimme your money!");
+				console.log("Gimme Your Money!");
 				player = [];
 				deck = [];
 				console.log(deck.length);
@@ -152,7 +150,7 @@ function checkGuess() {
 		}
 		else if (playerValue1 == playerValue2) {
 			console.log(playerValue1, playerValue2, cardThreeValue);
-			console.log("Deal again!");
+			console.log("Deal Again!");
 			player = [];
 			deck = [];
 			console.log(deck.length);
@@ -169,8 +167,6 @@ function dealCardsToPlayer() {
 	let num2 = Math.floor(Math.random()*deck.length);
 	let num3 = Math.floor(Math.random()*deck.length);
 		
-	
-	
 	player.push(deck.splice(num1, 1));
 	player.push(deck.splice(num2, 1));
 	nextCard.push(deck.splice(num3, 1));
@@ -181,8 +177,6 @@ function dealCardsToPlayer() {
 	cardThree = `${nextCard[0][0].num} of ${nextCard[0][0].suit}`;
 	cardThreeValue = nextCard[0][0].value
 	console.log(cardThreeValue)
-
-
 
 	showCards(playerValue1, playerSuit1, playerValue2, playerSuit2, cardThree)
 	
@@ -199,12 +193,7 @@ function showCards(val1, suit1, val2, suit2) {
 	cardTwo.src = "./images/2D.jpg";	
 	card2.appendChild(cardTwo);
 	console.log(card2);
-
 };
-
-// buildDeck(values, suits);
-// dealCardsToPlayer();
-// showCards();
 
 
 
