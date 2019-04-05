@@ -1,4 +1,4 @@
-const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
+const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
 const suits = ["C", "D", "H", "S"];
 let deck = [];
 let player = [];
@@ -6,6 +6,12 @@ let nextCard = [];
 const insideButton = document.querySelector(".inBetween");
 const outsideButton = document.querySelector(".outside");
 const dealCardsButton = document.querySelector(".dealer");
+const playAgainButton = document.querySelector(".reset");
+
+let laugh = document.querySelector(".laugh");
+let sentry = document.querySelector(".sentry");
+let ghost = document.querySelector(".ghost");
+
 let playerGuess;
 
 
@@ -15,15 +21,22 @@ let playerValue2
 let playerSuit2
 let cardThree
 let cardThreeValue
+let cardThreeImg
 
 let card1 = document.querySelector(".card1");
 let card2 = document.querySelector(".card2");
 let card3 = document.querySelector(".card3");
 
+let winner = document.querySelector(".winner");
+let loser = document.querySelector(".loser");
+let tie = document.querySelector(".tie");
+
+
+
 function buildDeck(arr1, arr2) {
 	for (let i =0; i < arr1.length; i++) {
 		for (let j = 0; j < arr2.length; j++) {
-			let card = { num: arr1[i], suit: arr2[j], value: i+2}
+			let card = { num: arr1[i], suit: arr2[j], value: i+2, imgSrc: `./images/${arr1[i]}${arr2[j]}.jpg`}
 			deck.push(card);
 		}
 	}
@@ -38,14 +51,23 @@ function buildDeck(arr1, arr2) {
  insideButton.addEventListener("click", ()=>{
  	playerGuess = 'inBetween'
  	checkGuess();
- 	let cardThree = document.createElement("img");
-	cardThree.src = "./images/2H.jpg";	
-	card2.appendChild(cardThree);
-	console.log(card3)
+ 	let cardThreeImgDiv = document.createElement("img");
+ 	cardThreeImgDiv.src = cardThreeImg	
+	card3.appendChild(cardThreeImgDiv);
+	
  })
- outsideButton.addEventListener("click", ()=> {
+ outsideButton.addEventListener("click", ()=>{
  	playerGuess = 'outside'
  	checkGuess();
+ 	let cardThreeImgDiv = document.createElement("img");
+ 	cardThreeImgDiv.src = cardThreeImg	
+	card3.appendChild(cardThreeImgDiv);
+	
+ })
+
+ playAgainButton.addEventListener("click", ()=>{
+ 	location.reload();
+ 	
  })
  
 function checkGuess() {
@@ -56,36 +78,46 @@ function checkGuess() {
 		console.log(playerValue2, '2');
 		console.log(cardThree, '3rd card');
 		if (playerValue1 < playerValue2) {
-			console.log (` in playerValue2 > playerValue1`)
+			console.log (`in playerValue2 > playerValue1`)
 
 			if (playerValue2 > cardThreeValue && cardThreeValue > playerValue1){
 				console.log("Winner, Winner, Vegan Dinner!");
+				winner.innerHTML = "You Win This Time...";
+				laugh.play();
 				player = [];
 				deck = [];
 				console.log(deck.length);
 				console.log(player);
 			} else if (cardThreeValue == playerValue1 || cardThreeValue == playerValue2) {
 				console.log("Deal again")
+				tie.innerHTML = "Play Again";
+				ghost.play();
 			}
 			else {
 				console.log('1 card < 2 card');
 				console.log("Gimme your money!");
+				loser.innerHTML = "Your Soul Is Mine!";
+				sentry.play();
 				player = [];
 				deck = []
 				console.log(deck.length);
 				console.log(player);
 			}
 		}
-		else if (playerValue2 < playerValue1) {
-			console.log (` in playerValue2 < playerValue1`)
+		else if (playerValue1 < playerValue2) {
+			
 				if (playerValue1 > cardThreeValue  && cardThreeValue > playerValue2 ){
-					console.log("Winner, Winner, Vegan Dinner!");
+				console.log("Winner, Winner, Vegan Dinner!");
+				winner.innerHTML = "You Win This Time...";
+				laugh.play();
 				player = [];
 				deck = []
 				console.log(deck.length);
 				console.log(player);
 				} else if (cardThreeValue == playerValue1 || cardThreeValue == playerValue2) {
 				console.log("Deal Again!");
+				tie.innerHTML = "Play Again";
+				ghost.play();
 				player = [];
 				deck = []
 				console.log(deck.length);
@@ -94,6 +126,8 @@ function checkGuess() {
 			else{
 				console.log('2 card < 1 card');
 				console.log("Gimme Your Money!");
+				loser.innerHTML = "Your Soul Is Mine!";
+				sentry.play();
 				player = [];
 				deck = []
 				console.log(deck.length);
@@ -104,24 +138,27 @@ function checkGuess() {
 	}
 
 	else if (playerGuess === "outside") {
-			
 			console.log(playerValue1, '1');
 			console.log(playerValue2, '2');
 			console.log(cardThree, '3rd card');
 			if(playerValue2 > playerValue1) {
 			if (cardThreeValue > playerValue1  &&  playerValue2 < cardThreeValue){
-				console.log(playerValue1, playerValue2, cardThreeValue);
 				console.log("Winner, Winner, Vegan Dinner!");
+				winner.innerHTML = 'You Win This Time...';
+				laugh.play();
 				player = [];
 				deck = [];
 				console.log(deck.length);
 				console.log(player);
 			} else if (cardThreeValue == playerValue1 || cardThreeValue == playerValue2){
 				console.log('Deal Again')
+				tie.innerHTML = "Play Again";
+				ghost.play();
 			}
 			else {
-				console.log(playerValue1, playerValue2, cardThreeValue);
 				console.log("Gimme your money!");
+				loser.innerHTML = "Your Soul Is Mine!";
+				sentry.play();
 				player = [];
 				deck = [];
 				console.log(deck.length);
@@ -129,18 +166,25 @@ function checkGuess() {
 			}
 		}
 		else if (playerValue1 > playerValue2) {
-				if (cardThreeValue > playerValue1  &&  playerValue2 < cardThreeValue){
+				if (cardThreeValue < playerValue1  &&  playerValue2 > cardThreeValue){
 				console.log(playerValue1, playerValue2, cardThreeValue);
 				console.log("Winner, Winner, Vegan Dinner!");
+				winner.innerHTML = 'You Win This Time';
+				laugh.play();
 				player = [];
 				deck = [];
 				console.log(deck.length);
 				console.log(player);
 			} else if (cardThreeValue == playerValue1 || cardThreeValue == playerValue2){
+				console.log("Deal Again")
+				tie.innerHTML = "Play Again";
+				ghost.play();
 				
 			}	else{
 				console.log(playerValue1, playerValue2, cardThreeValue);
 				console.log("Gimme Your Money!");
+				loser.innerHTML = "Your Soul Is Mine!";
+				sentry.play();
 				player = [];
 				deck = [];
 				console.log(deck.length);
@@ -151,6 +195,8 @@ function checkGuess() {
 		else if (playerValue1 == playerValue2) {
 			console.log(playerValue1, playerValue2, cardThreeValue);
 			console.log("Deal Again!");
+			tie.innerHTML = "Play Again";
+			ghost.play();
 			player = [];
 			deck = [];
 			console.log(deck.length);
@@ -172,28 +218,34 @@ function dealCardsToPlayer() {
 	nextCard.push(deck.splice(num3, 1));
 	playerValue1 = player[0][0].value
 	playerSuit1 = player[0][0].suit
+	playerValue1Img = player[0][0].imgSrc;
 	playerValue2 = player[1][0].value
 	playerSuit2 = player[1][0].suit
+	playerValue2Img = player[1][0].imgSrc;
 	cardThree = `${nextCard[0][0].num} of ${nextCard[0][0].suit}`;
 	cardThreeValue = nextCard[0][0].value
-	console.log(cardThreeValue)
+	cardThreeImg = nextCard[0][0].imgSrc
+	
 
-	showCards(playerValue1, playerSuit1, playerValue2, playerSuit2, cardThree)
+	showCards(playerValue1, playerSuit1, playerValue2, playerSuit2)
 	
 };
 
-function showCards(val1, suit1, val2, suit2) {
+function showCards(val1, suit1, val2, suit2, val3, suit3) {
 	console.log(`player has a ${val1} of ${suit1}`);
 	console.log(`player has a ${val2} of ${suit2}`);
+	
 	let cardOne = document.createElement("img");
-	cardOne.src = "./images/2C.jpg";
+	cardOne.src = player[0][0].imgSrc;
 	card1.appendChild(cardOne);
 	console.log(card1);
 	let cardTwo = document.createElement("img");
-	cardTwo.src = "./images/2D.jpg";	
+	cardTwo.src = player[1][0].imgSrc;	
 	card2.appendChild(cardTwo);
 	console.log(card2);
 };
+
+
 
 
 

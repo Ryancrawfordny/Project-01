@@ -1,5 +1,5 @@
 body {
-	background-image: url("images/background.jpg");
+	background-color: black;
 }
 header {
 	text-align: center;
@@ -30,9 +30,7 @@ img {
 	display: block;
   	margin-left: auto;
   	margin-right: auto;
-
-}
-
+  }
 .deck img {
 	height: 150px;
 	width: 150px;
@@ -58,22 +56,34 @@ img {
 	left: 10px;
 	margin-bottom: 10px;
 }
-
+.reset {
+	background-color: black;
+	color: #830303;
+	font-family: 'Nosifer', cursive;
+	font-size: 20px;
+}
 .main {
 	display: flex;
 	justify-content: space-between;
 }
+.mainImg {
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	position: absolute;
+	margin-top: 20%;
 
+}
 .buttons {
-	width: 200px;
+	width: 300px;
 	height: 650px;
-	border: 2px solid #830303;
-
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 .cards {
 	width: 300px;
 	height: 500px;
-	border: 2px solid #830303;
 	display: flex;
 	flex-direction: column;
 }
@@ -81,18 +91,42 @@ img {
 	height: 50%;
 }
 .cards div img{
-	height: 125px;
-	width: 80px;
-	
+	height: 150px;
+	width: 110px;
 }
 .deck {
 	width: 300px;
 	height: 650px;
-	border: 2px solid #830303;
 }
 .cards {
 	height: 650px;
 	width: 900px;
+}
+#first-d {
+	display: flex;
+	text-align: center;
+	margin-bottom: 20%;
+	justify-content: space-around;
+	margin-right: 10%
+}
+.winner {
+	color: #830303;
+	font-family: 'Nosifer', cursive;
+	font-size: 80px;
+	text-align: center;
+
+}
+.loser {
+	color: #830303;
+	font-family: 'Nosifer', cursive;
+	font-size: 80px;
+	text-align: center;
+}
+.tie {
+	color: #830303;
+	font-family: 'Nosifer', cursive;
+	font-size: 80px;
+	text-align: center;
 }
 
 
