@@ -74,8 +74,6 @@ function checkGuess() {
 	
 	if (playerGuess === "inBetween") {
 		if (playerValue1 < playerValue2) {
-			
-
 			if (playerValue2 > cardThreeValue && cardThreeValue > playerValue1){
 				winner.innerHTML = "You Win This Time...";
 				laugh.play();
@@ -93,7 +91,7 @@ function checkGuess() {
 				
 			}
 		}
-		else if (playerValue1 < playerValue2) {
+		else if (playerValue1 > playerValue2) {
 			
 				if (playerValue1 > cardThreeValue  && cardThreeValue > playerValue2 ){
 				winner.innerHTML = "You Win This Time...";
@@ -105,7 +103,6 @@ function checkGuess() {
 				ghost.play();
 				player = [];
 				deck = []
-				
 		}
 			else{
 				loser.innerHTML = "Your Soul Is Mine!";
