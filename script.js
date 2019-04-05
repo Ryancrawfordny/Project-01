@@ -73,116 +73,81 @@ function buildDeck(arr1, arr2) {
 function checkGuess() {
 	
 	if (playerGuess === "inBetween") {
-		console.log('in inBetween')
-		console.log(playerValue1, '1');
-		console.log(playerValue2, '2');
-		console.log(cardThree, '3rd card');
 		if (playerValue1 < playerValue2) {
-			console.log (`in playerValue2 > playerValue1`)
+			
 
 			if (playerValue2 > cardThreeValue && cardThreeValue > playerValue1){
-				console.log("Winner, Winner, Vegan Dinner!");
 				winner.innerHTML = "You Win This Time...";
 				laugh.play();
 				player = [];
 				deck = [];
-				console.log(deck.length);
-				console.log(player);
 			} else if (cardThreeValue == playerValue1 || cardThreeValue == playerValue2) {
-				console.log("Deal again")
 				tie.innerHTML = "Play Again";
 				ghost.play();
 			}
 			else {
-				console.log('1 card < 2 card');
-				console.log("Gimme your money!");
 				loser.innerHTML = "Your Soul Is Mine!";
 				sentry.play();
 				player = [];
 				deck = []
-				console.log(deck.length);
-				console.log(player);
+				
 			}
 		}
 		else if (playerValue1 < playerValue2) {
 			
 				if (playerValue1 > cardThreeValue  && cardThreeValue > playerValue2 ){
-				console.log("Winner, Winner, Vegan Dinner!");
 				winner.innerHTML = "You Win This Time...";
 				laugh.play();
 				player = [];
 				deck = []
-				console.log(deck.length);
-				console.log(player);
 				} else if (cardThreeValue == playerValue1 || cardThreeValue == playerValue2) {
-				console.log("Deal Again!");
 				tie.innerHTML = "Play Again";
 				ghost.play();
 				player = [];
 				deck = []
-				console.log(deck.length);
-				console.log(player);
+				
 		}
 			else{
-				console.log('2 card < 1 card');
-				console.log("Gimme Your Money!");
 				loser.innerHTML = "Your Soul Is Mine!";
 				sentry.play();
 				player = [];
 				deck = []
-				console.log(deck.length);
-				console.log(player);
+				
 			}
 		}
 		
 	}
 
 	else if (playerGuess === "outside") {
-			console.log(playerValue1, '1');
-			console.log(playerValue2, '2');
-			console.log(cardThree, '3rd card');
 			if(playerValue2 > playerValue1) {
 			if (cardThreeValue > playerValue1  &&  playerValue2 < cardThreeValue){
-				console.log("Winner, Winner, Vegan Dinner!");
 				winner.innerHTML = 'You Win This Time...';
 				laugh.play();
 				player = [];
 				deck = [];
-				console.log(deck.length);
-				console.log(player);
 			} else if (cardThreeValue == playerValue1 || cardThreeValue == playerValue2){
-				console.log('Deal Again')
 				tie.innerHTML = "Play Again";
 				ghost.play();
 			}
 			else {
-				console.log("Gimme your money!");
 				loser.innerHTML = "Your Soul Is Mine!";
 				sentry.play();
 				player = [];
 				deck = [];
-				console.log(deck.length);
-				console.log(player);
+				
 			}
 		}
 		else if (playerValue1 > playerValue2) {
 				if (cardThreeValue < playerValue1  &&  playerValue2 > cardThreeValue){
-				console.log(playerValue1, playerValue2, cardThreeValue);
-				console.log("Winner, Winner, Vegan Dinner!");
 				winner.innerHTML = 'You Win This Time';
 				laugh.play();
 				player = [];
 				deck = [];
-				console.log(deck.length);
-				console.log(player);
 			} else if (cardThreeValue == playerValue1 || cardThreeValue == playerValue2){
-				console.log("Deal Again")
 				tie.innerHTML = "Play Again";
 				ghost.play();
 				
 			}	else{
-				console.log(playerValue1, playerValue2, cardThreeValue);
-				console.log("Gimme Your Money!");
 				loser.innerHTML = "Your Soul Is Mine!";
 				sentry.play();
 				player = [];
@@ -193,8 +158,6 @@ function checkGuess() {
 			}
 		}
 		else if (playerValue1 == playerValue2) {
-			console.log(playerValue1, playerValue2, cardThreeValue);
-			console.log("Deal Again!");
 			tie.innerHTML = "Play Again";
 			ghost.play();
 			player = [];
