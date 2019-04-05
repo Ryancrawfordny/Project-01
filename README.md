@@ -19,3 +19,7 @@ First SEI project.x
  -Problems faced: JS. Still feel like I need my hand held though JS. The concepts are still confusing and i'm struggling to think like a developer.
 
  -Potential Solution - Practice and research. I'v been practicing on code academy and plan on doing that whle taking breaks from building the game. I will also use my resources here by reaching out to the instructors and to Mick for help.
+ 
+ 
+ **Deployment**
+ This project is available at [http://heavymetalcards.surge.sh/](http://heavymetalcards.surge.sh/)
